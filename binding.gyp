@@ -16,7 +16,10 @@
         "src",
         "src/includes"
       ],
-      "defines": [ "NAPI_DISABLE_CPP_EXCEPTIONS" ],
+      "defines": [ 
+        "NAPI_DISABLE_CPP_EXCEPTIONS",
+        "NAPI_VERSION=<(napi_build_version)"
+      ],
       "conditions": [
         ["OS=='win'", {
           "sources": [
