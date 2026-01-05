@@ -1,6 +1,6 @@
 {
-  "name": "node-gpu",
-  "version": "1.0.0",
+  "name": "node-gpuinfo",
+  "version": "1.0.1",
   "description": "A cross-platform Node.js native addon for retrieving detailed GPU information.",
   "main": "index.js",
   "scripts": {

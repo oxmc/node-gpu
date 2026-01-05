@@ -1,4 +1,4 @@
-# node-gpu
+# node-gpuinfo
 
 Cross-platform Node.js native addon for reading GPU (Graphics Processing Unit) information from NVIDIA, AMD, and Intel graphics cards.
 
@@ -42,7 +42,7 @@ This will automatically compile the native addon for your platform.
 ## Usage
 
 ```javascript
-const gpu = require('node-gpu');
+const gpu = require('node-gpuinfo');
 
 // Get number of GPUs
 const gpuCount = gpu.getGpuCount();
