@@ -13,9 +13,9 @@
   },
   "binary": {
     "module_name": "gpu",
-    "module_path": "./build/Release/",
+    "module_path": "./build/Release/napi-v{napi_build_version}",
     "package_name": "{module_name}-v{version}-napi-v{napi_build_version}-{platform}-{arch}.tar.gz",
-    "host": "https://github.com/oxmc/node-gpuinfo/releases/download/",
+    "host": "https://github.com/oxmc/node-gpu/releases/download/",
     "remote_path": "v{version}",
     "napi_versions": [
       9
