@@ -10,6 +10,26 @@ Cross-platform Node.js native addon for reading GPU (Graphics Processing Unit) i
 - 📊 Comprehensive GPU metrics (temperature, utilization, memory, clocks, etc.)
 - 📦 Easy to use Node.js API
 - 🔒 No external dependencies (besides node-gyp for building)
+- 🌍 Community-driven open source project
+
+## Implementation Status
+
+### Windows
+- ✅ **NVIDIA**: Full support via NVML (all metrics available)
+- ✅ **AMD**: Full support via ADLX (all metrics available)
+- ✅ **Intel**: Basic support via Windows APIs (name, memory)
+
+### Linux
+- ✅ **NVIDIA**: Full support via NVML (all metrics available)
+- ⚠️ **AMD**: Basic detection (placeholder metrics - **needs implementation**)
+- ⚠️ **Intel**: Placeholder only - **needs implementation**
+
+### macOS
+- ❌ **NVIDIA**: Not supported (Apple dropped NVIDIA support after High Sierra)
+- ⚠️ **AMD**: Basic detection via IOKit (placeholder metrics - **needs implementation**)
+- ⚠️ **Intel**: Basic detection via IOKit (placeholder metrics - **needs implementation**)
+
+**Note:** Items marked with ⚠️ return placeholder values. Real implementations need access to vendor-specific APIs or kernel interfaces. Contributions welcome!
 
 ## Installation
 
@@ -243,6 +263,71 @@ This project uses the following third-party components:
   - Note: ADLX headers are used under AMD's SDK license for interfacing with AMD drivers
 
 The main project code (excluding third-party components) is licensed under GPL-3.0.
+
+## Contributing
+
+We welcome contributions! This is a community-driven project and there are many areas where help is needed:
+
+### Priority Areas for Contribution
+
+1. **Linux AMD Support**
+   - Implement real metrics using sysfs (`/sys/class/drm/`)
+   - Add support for AMD ROCm libraries
+   - Read from `/sys/kernel/debug/dri/` for detailed info
+
+2. **Linux Intel Support**
+   - Implement i915 driver integration
+   - Use sysfs for temperature and frequency
+   - Add support for Intel GPU tools
+
+3. **macOS AMD/Intel Support**
+   - Explore Metal Performance Shaders for metrics
+   - Investigate IOAccelerator framework
+   - Add powermetrics parsing for GPU utilization
+
+4. **Additional Features**
+   - Per-process GPU usage
+   - GPU memory allocation details
+   - Multi-GPU affinity information
+   - Historical metrics/monitoring
+
+5. **Documentation**
+   - Add more usage examples
+   - Create API documentation
+   - Platform-specific notes and limitations
+
+### How to Contribute
+
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
+3. **Make your changes** and test on your platform
+4. **Follow the existing code style**
+5. **Add tests** if applicable
+6. **Submit a pull request** with a clear description
+
+### Development Guidelines
+
+- Test on your target platform(s) before submitting
+- Keep platform-specific code in separate files (`*_windows.c`, `*_linux.c`, `*_mac.c`)
+- Update the README with any new features or changes
+- Follow C naming conventions (snake_case for functions/variables)
+- Add comments explaining complex logic
+
+### Testing
+
+Before submitting a PR, ensure:
+```bash
+npm install
+npm test
+```
+
+Runs without errors on your platform.
+
+### Questions or Ideas?
+
+- Open an [issue](https://github.com/oxmc/node-gpu/issues) for bugs or feature requests
+- Start a [discussion](https://github.com/oxmc/node-gpu/discussions) for questions or ideas
+- Check existing issues before creating duplicates
 
 ## License
 

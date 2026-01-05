@@ -1,4 +1,4 @@
-#include "../gpu_minfo.h"
+#include "../gpu_info.h"
 #include <dlfcn.h>
 #include <stdio.h>
 #include <string.h>
