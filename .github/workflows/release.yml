@@ -23,6 +23,31 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+
+      - name: Install macOS dependencies
+        if: runner.os == 'macOS'
+        run: |
+          # Xcode command line tools should already be installed on GitHub runners
+          xcodebuild -version || true
+
+      - name: Verify Windows build tools
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          # GitHub Windows runners come with Visual Studio pre-installed
+          $vsPath = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property installationPath
+          Write-Host "Visual Studio path: $vsPath"
+
       - name: Install dependencies
         run: npm install --ignore-scripts
 
