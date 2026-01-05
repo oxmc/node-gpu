@@ -1,6 +1,6 @@
 {
   "name": "@oxmc/node-gpuinfo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A cross-platform Node.js native addon for retrieving detailed GPU information.",
   "main": "index.js",
   "scripts": {
