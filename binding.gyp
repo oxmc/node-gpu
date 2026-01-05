@@ -20,6 +20,7 @@
         "NAPI_DISABLE_CPP_EXCEPTIONS",
         "NAPI_VERSION=<(napi_build_version)"
       ],
+      "product_dir": "<(module_root_dir)/build/Release/napi-v<(napi_build_version)",
       "conditions": [
         ["OS=='win'", {
           "sources": [
