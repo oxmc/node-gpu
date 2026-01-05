@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+build/
+*.o
+*.obj
+*.node
+*.log
+
+# node-pre-gyp
+lib/binding/
+
+# Package files
+*.tgz
+*.tar.gz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
