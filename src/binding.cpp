@@ -162,12 +162,11 @@ Napi::Value GetAllGpuInfo(const Napi::CallbackInfo& info) {
     for (int32_t i = 0; i < count; i++) {
         gpu_info_t gpu_info;
         result = gpu_get_info(i, &gpu_info);
-        
+
         if (result == GPU_SUCCESS) {
-            gpuArray[i] = GpuInfoToObject(env, gpu_info);
+            gpuArray.Set(static_cast<uint32_t>(i), GpuInfoToObject(env, gpu_info));
         } else {
-            // Add null for failed GPUs
-            gpuArray[i] = env.Null();
+            gpuArray.Set(static_cast<uint32_t>(i), env.Null());
         }
     }
     
